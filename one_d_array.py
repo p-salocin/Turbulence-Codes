@@ -11,7 +11,7 @@ import numpy as np
 
 
 # Defining function
-def to_1d (x, name):
+def to_1d(x, name):
     """Coerce input `x` (a time series in .mat files) to a 1D float numpy array.
 
     Parameters
