@@ -9,6 +9,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
+import pylustrator
+pylustrator.start()
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
@@ -44,7 +46,7 @@ plt.rcParams['axes.linewidth'] = 1.2
 # Define cluster and line colors 
 cmap = plt.cm.inferno
 cluster_colors = [cmap(0.15), cmap(0.50), cmap(0.85)]
-colors = [cmap(0.85), cmap(0.50), cmap(0.15)] + ["#164979", "#4A6883"]
+colors = [cmap(0.85), cmap(0.50), cmap(0.15)] + ['#3A6B35', '#A3BFA3']
 line_styles = ['dashed', 'dashed','dashed', 'solid']
 
 # Create the figure and axes
@@ -80,13 +82,12 @@ for k in range(K):
     if idx.size:
         ax2.scatter(idx/10000, series[idx], s=0.8, color=cluster_colors[k], alpha=0.95)
 
-ax2.set_xlabel(r'$t~(\times 10^4~\text{a.u.})$', labelpad=10)
+ax2.set_xlabel(r'$t~(\times 10^4~\text{arb. units})$', labelpad=10)
 ax2.set_ylabel(r'$\varepsilon(t)$', labelpad=10)
 ax2.tick_params(axis='both', which='both', direction='in', labelsize=text_size)
 ax2.text(-0.12, 1.02, "b", transform=ax2.transAxes,
              ha='right', va='bottom', fontsize=text_size+3, fontweight='bold')
 ax2.set_xlim(0,15)
-ax2.set_ylim(-1, 10)
 
 
 # Pie chart inset for cluster proportions
@@ -126,8 +127,8 @@ for i, df in enumerate(dfs_a):
                         linewidth=1.7, marker='o', facecolors='none',
                         color=colors[i], s=35, zorder=0)
 
-ax5.set_ylabel(r"$f(\epsilon)$", labelpad=10)
-ax5.set_xlabel(r"$\epsilon$", labelpad=10)
+ax5.set_ylabel(r"$f(\epsilon)$", labelpad=12)
+ax5.set_xlabel(r"$\epsilon$", labelpad=12)
 ax5.set_xscale('log')
 ax5.set_yscale('log')
 ax5.set_xlim(1e-2,1.2e1)
@@ -141,8 +142,12 @@ ax5.text(-0.12, 1.02, "d", transform=ax5.transAxes,
 plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}
 plt.figure(1).axes[0].set(position=[0.1106, 0.4929, 0.3795, 0.4105])
 plt.figure(1).axes[2].set(position=[0.7339, 0.7801, 0.12, 0.1304])
-plt.figure(1).axes[0].texts[0].set(position=(-0.12, 0.6987))
-
 
 # Save and show the final figure
+#% start: automatic generated code from pylustrator
+plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}
+import matplotlib as mpl
+getattr(plt.figure(1), '_pylustrator_init', lambda: ...)()
+plt.figure(1).axes[0].texts[0].set(position=(-0.12, 0.6987))
+#% end: automatic generated code from pylustrator
 plt.show()
